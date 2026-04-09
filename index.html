@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrimePage — Conversion‑Focused Websites for Local Businesses</title>
+  <meta name="description" content="PrimePage builds premium, fast, mobile-first websites that generate direct inquiries for local businesses. Get a free website audit." />
+  <meta property="og:title" content="PrimePage — Simple websites. Serious results." />
+  <meta property="og:description" content="Premium, conversion-focused websites for real estate, clinics, dentists, salons, gyms, and premium local services." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e5e8ef;
+      --accent: #1536d1; /* deep blue */
+      --accent-2: #1dd1a1; /* subtle electric green accent for hints */
+      --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-lg: 22px;
+      --maxw: 1160px;
+      --speed: 240ms;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,'Noto Sans',sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(21,54,209,0.08), transparent 60%), radial-gradient(1000px 600px at -10% 10%, rgba(29,209,161,0.06), transparent 55%), var(--bg);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      scroll-behavior:smooth;
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .section{padding:64px 0}
+    @media (min-width: 960px){ .section{padding:92px 0} }
+
+    /* Header */
+    .header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(246,248,251,0.7);
+      border-bottom:1px solid rgba(229,232,239,0.7);
+      transition:all var(--speed) ease;
+    }
+    .header.scrolled{
+      background:rgba(255,255,255,0.85);
+      box-shadow:var(--shadow-sm);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;height:68px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-0.01em;
+    }
+    .brand-mark{
+      width:28px;height:28px;border-radius:8px;
+      background:conic-gradient(from 140deg, var(--accent), #1b48ff 35%, #1dd1a1 36%, #1dd1a1 55%, #1536d1 56%);
+      box-shadow:0 6px 18px rgba(21,54,209,0.25), inset 0 0 0 1px rgba(255,255,255,0.6);
+    }
+    .brand-name{font-size:18px}
+    .nav-links{display:none;gap:24px;align-items:center}
+    .nav-links a{color:var(--muted);font-weight:500}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{display:none}
+    .menu-btn{border:1px solid var(--line);background:var(--surface);width:42px;height:38px;border-radius:10px;display:grid;place-items:center;cursor:pointer}
+    .menu-icon,.menu-icon::before,.menu-icon::after{content:"";display:block;height:2px;width:18px;background:var(--text);border-radius:2px;position:relative;transition:all var(--speed) ease}
+    .menu-icon::before{position:absolute;transform:translateY(-6px)}
+    .menu-icon::after{position:absolute;transform:translateY(6px)}
+    .mobile-panel{position:fixed;inset:68px 0 auto 0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:none}
+    .mobile-nav{padding:16px 20px 24px;display:flex;flex-direction:column;gap:14px}
+    .mobile-nav a{padding:12px 10px;border-radius:10px;color:var(--text);border:1px solid transparent}
+    .mobile-nav a:hover{background:var(--bg);border-color:var(--line)}
+    @media (min-width: 980px){
+      .menu-btn{display:none}
+      .nav-links{display:flex}
+      .nav-cta{display:flex;gap:12px;align-items:center}
+    }
+
+    /* Buttons */
+    .btn{
+      appearance:none;border:0;cursor:pointer;
+      font-weight:600;font-size:15px;padding:14px 18px;border-radius:12px;
+      display:inline-flex;gap:10px;align-items:center;justify-content:center;
+      transition:transform var(--speed) ease, box-shadow var(--speed) ease, background var(--speed) ease, color var(--speed) ease, border-color var(--speed) ease, opacity var(--speed) ease;
+      will-change:transform;
+      text-align:center;
+    }
+    .btn:active{transform:translateY(0.5px) scale(0.995)}
+    .btn-primary{
+      background:linear-gradient(180deg, #1e3fff 0%, var(--accent) 100%);
+      color:#fff;box-shadow:0 10px 26px rgba(21,54,209,0.22);
+    }
+    .btn-primary:hover{box-shadow:0 14px 36px rgba(21,54,209,0.28);filter:saturate(1.05)}
+    .btn-outline{
+      background:transparent;border:1.5px solid var(--line);color:var(--text)
+    }
+    .btn-outline:hover{border-color:#cfd6e6;background:rgba(15,23,42,0.03)}
+    .btn-ghost{
+      background:rgba(255,255,255,0.5);border:1px solid var(--line)
+    }
+    .btn-whatsapp{
+      background:#25D366;color:#053a1e;box-shadow:0 10px 24px rgba(37,211,102,0.25)
+    }
+    .btn-dark{
+      background:#0f172a;color:#fff
+    }
+
+    /* Hero */
+    .hero{padding:52px 0 24px}
+    .hero-grid{display:grid;gap:28px}
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,0.7);
+      font-size:12px;color:var(--muted)
+    }
+    .hero h1{
+      font-size:32px;line-height:1.15;margin:10px 0 12px;font-weight:800;letter-spacing:-0.02em;
+    }
+    .hero p.sub{color:var(--muted);font-size:16px;margin:0 0 16px}
+    .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+    .trustline{margin-top:12px;font-size:13px;color:#475569}
+    .hero-card{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm)
+    }
+    .preview{
+      user-select:none;border-radius:14px;border:1px solid var(--line);overflow:hidden;background:linear-gradient(135deg, rgba(21,54,209,0.08), rgba(29,209,161,0.07)), #fbfcff;
+      position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,0.8);
+      height:220px;
+    }
+    .preview .bar{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);background:linear-gradient(#fff, #f7f8fc)}
+    .dot{width:8px;height:8px;border-radius:50%;background:#e2e8f0;box-shadow:inset 0 0 0 1px #cbd5e1}
+    .screen{
+      padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px
+    }
+    .scr-card{background:#fff;border:1px solid var(--line);border-radius:10px;height:72px;box-shadow:var(--shadow-sm)}
+    .scr-hero{grid-column:1/-1;height:76px;background:linear-gradient(90deg, rgba(21,54,209,0.12), rgba(21,54,209,0.02));border:1px solid var(--line);border-radius:12px}
+
+    @media (min-width: 980px){
+      .hero{padding:84px 0 32px}
+      .hero-grid{grid-template-columns:1.1fr 0.9fr;align-items:center}
+      .hero h1{font-size:44px}
+      .hero p.sub{font-size:18px}
+      .preview{height:280px}
+    }
+
+    /* Section titles */
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:26px}
+    .section-title{font-size:26px;line-height:1.2;letter-spacing:-0.02em;margin:0 0 8px;font-weight:800}
+    .section-sub{color:var(--muted);margin:0}
+    @media (min-width: 960px){ .section-title{font-size:32px} }
+
+    /* Cards grid */
+    .grid{display:grid;gap:14px}
+    @media (min-width: 720px){ .grid.cols-3{grid-template-columns:repeat(3, 1fr)} }
+    @media (min-width: 960px){ .grid.cols-4{grid-template-columns:repeat(4, 1fr)} }
+    .card{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm);
+      transition:transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:#dfe5f1}
+    .card h4{margin:2px 0 6px;font-size:16px;font-weight:700}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .icon{
+      width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:8px;
+      background:linear-gradient(180deg, #f7f9ff, #eef2ff);border:1px solid #e6eaff
+    }
+    .icon svg{width:18px;height:18px;color:var(--accent)}
+
+    /* Problem bullets */
+    .bullets{display:grid;gap:8px;margin-top:12px}
+    .bullet{display:flex;gap:10px;align-items:flex-start}
+    .bullet svg{width:16px;height:16px;color:#ef4444;margin-top:4px}
+    .bullet span{font-size:15px;color:var(--muted)}
+
+    /* Demo cards */
+    .demo-card{display:flex;flex-direction:column;gap:12px}
+    .browser{
+      border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;box-shadow:var(--shadow-sm)
+    }
+    .browser .top{display:flex;align-items:center;gap:8px;padding:10px;border-bottom:1px solid var(--line);background:linear-gradient(#fff,#f5f7fb)}
+    .browser .dots .d{width:8px;height:8px;border-radius:999px;background:#e2e8f0;display:inline-block;margin-right:6px}
+    .shot{
+      background:linear-gradient(135deg, rgba(21,54,209,0.10), rgba(21,54,209,0.03)), radial-gradient(400px 160px at 80% 10%, rgba(29,209,161,0.1), transparent), #fbfcff;
+      height:160px;
+      display:grid;grid-template-columns:1.2fr 0.8fr;gap:10px;padding:12px
+    }
+    .shot .pane{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow-sm)}
+    .shot .hero{grid-column:1/-1;height:64px;background:linear-gradient(90deg, rgba(21,54,209,0.12), rgba(21,54,209,0.02));border:1px solid var(--line);border-radius:12px}
+    .demo-meta{display:flex;flex-direction:column;gap:6px}
+    .demo-meta h4{margin:0;font-size:16px;font-weight:700}
+    .demo-meta p{margin:0;color:var(--muted);font-size:14px}
+    .result{font-size:13px;color:#0f766e;display:inline-flex;gap:6px;align-items:center}
+    .result svg{width:14px;height:14px;color:#0ea5e9}
+
+    /* Why points */
+    .why{display:grid;gap:12px}
+    @media (min-width: 720px){ .why{grid-template-columns:repeat(4,1fr)} }
+    .point{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:10px;align-items:flex-start}
+    .point svg{width:18px;height:18px;color:#16a34a;margin-top:2px}
+    .point b{display:block;margin-bottom:4px}
+    .note{margin-top:10px;color:var(--muted)}
+
+    /* Steps */
+    .steps{display:grid;gap:12px}
+    @media (min-width: 720px){ .steps{grid-template-columns:repeat(3,1fr)} }
+    .step{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;box-shadow:var(--shadow-sm)}
+    .badge{
+      width:30px;height:30px;border-radius:8px;background:#eef2ff;border:1px solid #e6eaff;color:var(--accent);
+      display:grid;place-items:center;font-weight:700;font-size:14px;margin-bottom:8px
+    }
+
+    /* Offer band */
+    .offer{background:linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm)}
+    .offer p{margin:8px 0;color:var(--muted)}
+    .offer .hint{font-size:13px;color:#475569}
+
+    /* CTA band */
+    .cta{
+      background:linear-gradient(180deg, #0f172a 0%, #111827 100%);
+      color:#fff;border-radius:var(--radius-lg);padding:26px;border:1px solid #0b1220;box-shadow:0 16px 44px rgba(2,6,23,0.35)
+    }
+    .cta h3{margin:0 0 8px;font-size:24px}
+    .cta p{margin:0 0 14px;color:#cbd5e1}
+    .cta-actions{display:flex;flex-wrap:wrap;gap:10px}
+    .cta small{display:block;margin-top:10px;color:#9aa4b2}
+
+    /* Footer */
+    footer{padding:30px 0;border-top:1px solid var(--line);margin-top:36px}
+    .fgrid{display:grid;gap:12px}
+    @media (min-width: 720px){ .fgrid{grid-template-columns:auto 1fr auto;align-items:center} }
+    .social{display:flex;gap:12px;flex-wrap:wrap}
+    .social a{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+    .social svg{width:16px;height:16px;color:var(--muted)}
+    .copy{color:#8a94a7;font-size:13px}
+    .footer-line{margin-top:8px;color:#64748b;font-weight:600}
+
+    /* Reveal on scroll */
+    .reveal-on-scroll{opacity:0;transform:translateY(12px);transition:opacity 520ms cubic-bezier(.2,.8,.2,1), transform 520ms cubic-bezier(.2,.8,.2,1)}
+    .reveal-on-scroll.reveal{opacity:1;transform:translateY(0)}
+
+    /* Floating WhatsApp */
+    .float-wa{
+      position:fixed;right:16px;bottom:16px;z-index:40;
+      display:none;
+    }
+    .float-wa .btn{box-shadow:0 12px 24px rgba(37,211,102,0.28)}
+    @media (max-width: 720px){ .float-wa{display:block} }
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-20{margin-top:20px}
+    .mb-8{margin-bottom:8px}.mb-16{margin-bottom:16px}.mb-24{margin-bottom:24px}
+    .center{display:flex;align-items:center;justify-content:center}
+    .right{display:flex;justify-content:flex-end}
+    .nowrap{white-space:nowrap}
+
+    /* Modal */
+    .modal{
+      position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:60
+    }
+    .modal.active{display:flex}
+    .overlay{position:absolute;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px)}
+    .dialog{
+      position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-md);
+      width:100%;max-width:520px;padding:18px
+    }
+    .dialog h3{margin:0 0 8px;font-size:20px}
+    .dialog p{margin:0 0 12px;color:var(--muted)}
+    .close-x{position:absolute;right:10px;top:10px;border:1px solid var(--line);background:#fff;border-radius:10px;width:36px;height:34px;display:grid;place-items:center;cursor:pointer}
+    .form{display:grid;gap:10px;margin-top:8px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-weight:600;font-size:13px;color:#1f2937}
+    .field input,.field textarea,.field select{
+      border:1px solid var(--line);border-radius:10px;padding:12px 12px;font-size:14px;background:#fff
+    }
+    .field textarea{min-height:84px;resize:vertical}
+    .dialog .actions{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-top:6px}
+    .helper{font-size:12px;color:#6b7280}
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">PrimePage</span>
+        </div>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#demos">Work</a>
+          <a href="#what">What you get</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <button class="btn btn-outline" data-open="audit">Get a Free Website Audit</button>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <span class="menu-icon"></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-panel" id="mobilePanel">
+      <div class="mobile-nav container">
+        <a href="#demos" class="mnav">Work</a>
+        <a href="#what" class="mnav">What you get</a>
+        <a href="#process" class="mnav">Process</a>
+        <a href="#contact" class="mnav">Contact</a>
+        <button class="btn btn-primary" data-open="audit">Get a Free Website Audit</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2l2.39 6.89h7.24l-5.86 4.26 2.24 6.85L12 15.77 6.99 20l2.24-6.85L3.37 8.89h7.24L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+            Premium, conversion-first builds
+          </span>
+          <h1>Websites that make your business look premium and bring direct inquiries.</h1>
+          <p class="sub">PrimePage builds fast, mobile-friendly websites for local businesses that want more calls, more WhatsApp leads, and more trust.</p>
+          <div class="hero-ctas">
+            <button class="btn btn-primary" data-open="audit">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M4 7h16M4 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Get a Free Website Audit
+            </button>
+            <a class="btn btn-outline" href="#demos">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              View Demo Websites
+            </a>
+          </div>
+          <div class="trustline">Delivered in 3–4 days | Mobile-optimized | Built for real business results</div>
+        </div>
+        <div class="hero-card reveal-on-scroll">
+          <div class="preview">
+            <div class="bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="screen">
+              <div class="scr-hero"></div>
+              <div class="scr-card"></div>
+              <div class="scr-card"></div>
+              <div class="scr-card"></div>
+              <div class="scr-card"></div>
+            </div>
+          </div>
+          <div class="mt-12" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <div class="eyebrow" title="WhatsApp ready">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#25D366"><path d="M12 2.01C6.49 2.01 2 6.5 2 12.03c0 1.77.46 3.51 1.33 5.04L2 22l5.08-1.31A10.03 10.03 0 0 0 12 22.06c5.52 0 10-4.49 10-10.03 0-5.53-4.48-10.02-10-10.02Zm5.77 14.65c-.24.68-1.4 1.29-1.93 1.33-.52.05-1.16.07-1.87-.12-.43-.12-1-.33-1.72-.64-3.02-1.31-4.98-4.38-5.13-4.59-.15-.2-1.23-1.64-1.23-3.13 0-1.49.78-2.22 1.07-2.53.28-.31.62-.39.83-.39.21 0 .42 0 .6.01.19.01.45-.07.7.53.24.6.83 2.07.91 2.22.08.15.12.33.02.53-.1.2-.16.33-.31.5-.16.18-.33.4-.47.54-.15.15-.3.31-.13.61.18.31.79 1.29 1.7 2.1 1.17 1.05 2.16 1.38 2.49 1.53.33.15.53.13.73-.08.2-.21.84-.98 1.06-1.31.22-.33.47-.28.78-.16.31.12 1.97.93 2.31 1.1.34.17.57.26.65.4.08.14.08.82-.16 1.5Z"/></svg>
+              WhatsApp & Call buttons built-in
+            </div>
+            <div class="eyebrow">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Conversion-focused layouts
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Most local business websites fail for one simple reason. They do not convert.</h2>
+        </div>
+        <div class="grid" style="grid-template-columns:1fr;gap:12px">
+          <div class="card reveal-on-scroll">
+            <div class="bullets">
+              <div class="bullet">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span>Customers land on a weak website and leave.</span>
+              </div>
+              <div class="bullet">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span>No clear call button.</span>
+              </div>
+              <div class="bullet">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span>No WhatsApp option.</span>
+              </div>
+              <div class="bullet">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span>No trust.</span>
+              </div>
+              <div class="bullet">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span>No clear offer.</span>
+              </div>
+              <div class="bullet">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span>No reason to contact.</span>
+              </div>
+            </div>
+            <div class="mt-16" style="display:flex;align-items:center;gap:8px;font-weight:700">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>PrimePage fixes that.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What you get -->
+    <section class="section" id="what">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">What you get</h2>
+          <p class="section-sub">Short, clear, built for business.</p>
+        </div>
+        <div class="grid cols-4">
+          <div class="card reveal-on-scroll">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <h4>High-converting landing page</h4>
+            <p>Clear structure. Clear actions.</p>
+          </div>
+          <div class="card reveal-on-scroll">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18H6z" stroke="currentColor" stroke-width="1.6"/><path d="M9 3v18" stroke="currentColor" stroke-width="1.2"/></svg>
+            </div>
+            <h4>WhatsApp and call buttons</h4>
+            <p>Lead capture without friction.</p>
+          </div>
+          <div class="card reveal-on-scroll">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M7 4h10M5 20h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h4>Mobile-first layout</h4>
+            <p>Looks sharp on every screen.</p>
+          </div>
+          <div class="card reveal-on-scroll">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 15l3 3 9-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h4>Trust sections</h4>
+            <p>Proof, policies, and next steps.</p>
+          </div>
+          <div class="card reveal-on-scroll">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 20c1-4 5-6 8-6s7 2 8 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h4>Testimonials ready</h4>
+            <p>Real words. Real impact.</p>
+          </div>
+          <div class="card reveal-on-scroll">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 6h12v12H6z" stroke="currentColor" stroke-width="1.6"/><path d="M10 10h4v4h-4z" fill="currentColor"/></svg>
+            </div>
+            <h4>Services / offers / location</h4>
+            <p>Clear, local, findable.</p>
+          </div>
+          <div class="card reveal-on-scroll">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6l2-3 2 6 2-3h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h4>Fast delivery</h4>
+            <p>First draft in days, not weeks.</p>
+          </div>
+          <div class="card reveal-on-scroll">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 5h14v14H5z" stroke="currentColor" stroke-width="1.6"/><path d="M9 9h6v6H9z" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <h4>Simple editing support</h4>
+            <p>Small updates made easy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo websites -->
+    <section class="section" id="demos">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Demo work</h2>
+          <a class="btn btn-outline" href="#contact">Get a Free Audit</a>
+        </div>
+        <div class="grid cols-3">
+          <!-- Real Estate -->
+          <div class="card demo-card reveal-on-scroll">
+            <div class="browser">
+              <div class="top">
+                <div class="dots"><span class="d"></span><span class="d"></span><span class="d"></span></div>
+                <div class="muted" style="font-size:12px">realestate-landing.demo</div>
+              </div>
+              <div class="shot">
+                <div class="hero"></div>
+                <div class="pane"></div>
+                <div class="pane"></div>
+              </div>
+            </div>
+            <div class="demo-meta">
+              <h4>Real Estate Landing Page</h4>
+              <p>Built to generate direct inquiries from property buyers and investors.</p>
+              <span class="result">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l4 4 12-12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Focus: WhatsApp + call leads from listings.
+              </span>
+            </div>
+          </div>
+          <!-- Clinic -->
+          <div class="card demo-card reveal-on-scroll">
+            <div class="browser">
+              <div class="top">
+                <div class="dots"><span class="d"></span><span class="d"></span><span class="d"></span></div>
+                <div class="muted" style="font-size:12px">clinic-site.demo</div>
+              </div>
+              <div class="shot" style="background:linear-gradient(135deg, rgba(29,209,161,0.08), rgba(21,54,209,0.04)), #fbfcff">
+                <div class="hero"></div>
+                <div class="pane"></div>
+                <div class="pane"></div>
+              </div>
+            </div>
+            <div class="demo-meta">
+              <h4>Clinic Website</h4>
+              <p>Built to build trust and increase appointment requests.</p>
+              <span class="result">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l4 4 12-12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Focus: Clear services, easy booking.
+              </span>
+            </div>
+          </div>
+          <!-- Salon / Gym / Service -->
+          <div class="card demo-card reveal-on-scroll">
+            <div class="browser">
+              <div class="top">
+                <div class="dots"><span class="d"></span><span class="d"></span><span class="d"></span></div>
+                <div class="muted" style="font-size:12px">salon-gym.demo</div>
+              </div>
+              <div class="shot" style="background:linear-gradient(135deg, rgba(21,54,209,0.10), rgba(29,209,161,0.05)), #fbfcff">
+                <div class="hero"></div>
+                <div class="pane"></div>
+                <div class="pane"></div>
+              </div>
+            </div>
+            <div class="demo-meta">
+              <h4>Salon / Gym / Service Demo</h4>
+              <p>Built to look premium and convert visitors into leads.</p>
+              <span class="result">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l4 4 12-12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Focus: Offers + location + instant contact.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Why businesses choose PrimePage</h2>
+        </div>
+        <div class="why">
+          <div class="point reveal-on-scroll">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Built for leads, not just looks</b><span class="muted">Structured for action.</span></div>
+          </div>
+          <div class="point reveal-on-scroll">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M13 3l3 3-8 8H5v-3l8-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Fast to launch</b><span class="muted">Days, not months.</span></div>
+          </div>
+          <div class="point reveal-on-scroll">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M7 4h10M6 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div><b>Clear communication</b><span class="muted">You get updates and clarity.</span></div>
+          </div>
+          <div class="point reveal-on-scroll">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18H6z" stroke="currentColor" stroke-width="1.6"/><path d="M9 3v18" stroke="currentColor" stroke-width="1.2"/></svg>
+            <div><b>Designed for mobile users first</b><span class="muted">Where your customers are.</span></div>
+          </div>
+        </div>
+        <p class="note">Pretty websites are common. Websites that convert are rare.</p>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Simple process</h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal-on-scroll">
+            <div class="badge">1</div>
+            <b>Send your business details</b>
+            <p class="muted">Share your services, location, and goals.</p>
+          </div>
+          <div class="step reveal-on-scroll">
+            <div class="badge">2</div>
+            <b>We create a draft and structure</b>
+            <p class="muted">You see a clear, conversion-first layout.</p>
+          </div>
+          <div class="step reveal-on-scroll">
+            <div class="badge">3</div>
+            <b>You review, refine, and launch</b>
+            <p class="muted">Go live with a site that looks serious.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offer -->
+    <section class="section">
+      <div class="container">
+        <div class="offer reveal-on-scroll">
+          <h3 class="section-title" style="font-size:22px;margin:0 0 8px">Best for businesses that want a clean, premium online presence without wasting time</h3>
+          <p>If your current website is outdated, weak, or missing, PrimePage builds a better version focused on trust and inquiries.</p>
+          <p class="hint">Starting from a simple one-page build. Custom packages available.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta reveal-on-scroll">
+          <h3>Want a website that looks serious and gets action?</h3>
+          <p>Get a quick audit of your current website or online presence.</p>
+          <div class="cta-actions">
+            <a class="btn btn-whatsapp" id="ctaWhatsApp" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.01C6.49 2.01 2 6.5 2 12.03c0 1.77.46 3.51 1.33 5.04L2 22l5.08-1.31A10.03 10.03 0 0 0 12 22.06c5.52 0 10-4.49 10-10.03 0-5.53-4.48-10.02-10-10.02Zm5.77 14.65c-.24.68-1.4 1.29-1.93 1.33-.52.05-1.16.07-1.87-.12-.43-.12-1-.33-1.72-.64-3.02-1.31-4.98-4.38-5.13-4.59-.15-.2-1.23-1.64-1.23-3.13 0-1.49.78-2.22 1.07-2.53.28-.31.62-.39.83-.39.21 0 .42 0 .6.01.19.01.45-.07.7.53.24.6.83 2.07.91 2.22.08.15.12.33.02.53-.1.2-.16.33-.31.5-.16.18-.33.4-.47.54-.15.15-.3.31-.13.61.18.31.79 1.29 1.7 2.1 1.17 1.05 2.16 1.38 2.49 1.53.33.15.53.13.73-.08.2-.21.84-.98 1.06-1.31.22-.33.47-.28.78-.16.31.12 1.97.93 2.31 1.1.34.17.57.26.65.4.08.14.08.82-.16 1.5Z"/></svg>
+              Message on WhatsApp
+            </a>
+            <button class="btn btn-dark" data-open="book">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 2h12v20H6z" stroke="currentColor" stroke-width="1.6"/><path d="M8 6h8M8 10h8M8 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Book a Quick Call
+            </button>
+          </div>
+          <small>PrimePage is built for business owners who care about results, not noise.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container fgrid">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">PrimePage</span>
+      </div>
+      <div class="social">
+        <a id="footerWA" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.01C6.49 2.01 2 6.5 2 12.03c0 1.77.46 3.51 1.33 5.04L2 22l5.08-1.31A10.03 10.03 0 0 0 12 22.06c5.52 0 10-4.49 10-10.03 0-5.53-4.48-10.02-10-10.02Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:hello@primepage.studio">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          hello@primepage.studio
+        </a>
+        <a href="https://instagram.com/primepage.studio" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+          @primepage.studio
+        </a>
+      </div>
+      <div class="right">
+        <span class="copy">© <span id="year"></span> PrimePage</span>
+      </div>
+      <div class="footer-line">Simple websites. Serious results.</div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <div class="float-wa">
+    <a class="btn btn-whatsapp" id="floatWA" aria-label="Quick WhatsApp message" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.01C6.49 2.01 2 6.5 2 12.03c0 1.77.46 3.51 1.33 5.04L2 22l5.08-1.31A10.03 10.03 0 0 0 12 22.06c5.52 0 10-4.49 10-10.03 0-5.53-4.48-10.02-10-10.02Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="overlay" data-close></div>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-x" data-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <h3 id="modalTitle">Free Website Audit</h3>
+      <p id="modalDesc">Share a few details. You’ll get quick, direct feedback.</p>
+      <form class="form" id="leadForm">
+        <input type="hidden" id="formType" value="audit" />
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" placeholder="John Doe" required />
+        </div>
+        <div class="field">
+          <label for="business">Business name</label>
+          <input id="business" name="business" type="text" placeholder="Acme Dental Clinic" required />
+        </div>
+        <div class="field" id="websiteField">
+          <label for="website">Website or profile link (if any)</label>
+          <input id="website" name="website" type="url" placeholder="https://example.com" />
+        </div>
+        <div class="field" id="cityField">
+          <label for="city">City / Area</label>
+          <input id="city" name="city" type="text" placeholder="Dubai Marina" />
+        </div>
+        <div class="field" id="timeField" style="display:none">
+          <label for="time">Preferred call time</label>
+          <input id="time" name="time" type="datetime-local" />
+        </div>
+        <div class="field">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" placeholder="What you want to improve or any key services."></textarea>
+        </div>
+        <div class="actions">
+          <span class="helper">We’ll reply on WhatsApp.</span>
+          <button class="btn btn-primary" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M12 4l8 8-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Configurable contact
+    const WHATSAPP_NUMBER = '15551234567'; // replace with your WhatsApp number, e.g., 15551234567
+    const DEFAULT_WA_MESSAGE = "Hi PrimePage, I'm interested in a quick website audit.";
+
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Build WhatsApp links
+    function waLink(text){
+      const msg = encodeURIComponent(text || DEFAULT_WA_MESSAGE);
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+    }
+    const ctaWA = document.getElementById('ctaWhatsApp');
+    const floatWA = document.getElementById('floatWA');
+    const footerWA = document.getElementById('footerWA');
+    [ctaWA, floatWA, footerWA].forEach(el => { if(el) el.href = waLink(); });
+
+    // Header scroll state
+    const header = document.getElementById('header');
+    const onScroll = () => {
+      if(window.scrollY > 10) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+    };
+    onScroll(); window.addEventListener('scroll', onScroll);
+
+    // Mobile nav
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    let menuOpen = false;
+    function toggleMenu(force){
+      menuOpen = typeof force === 'boolean' ? force : !menuOpen;
+      mobilePanel.style.display = menuOpen ? 'block' : 'none';
+      menuBtn.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
+    }
+    menuBtn.addEventListener('click', () => toggleMenu());
+    mobilePanel.addEventListener('click', (e) => {
+      if(e.target.classList.contains('mnav')) toggleMenu(false);
+    });
+
+    // Smooth scroll for internal anchors (for browsers not supporting CSS scroll-behavior in iframes consistently)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        if(!id) return;
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('reveal');
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => io.observe(el));
+
+    // Modal logic
+    const modal = document.getElementById('modal');
+    const form = document.getElementById('leadForm');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const formTypeEl = document.getElementById('formType');
+    const websiteField = document.getElementById('websiteField');
+    const cityField = document.getElementById('cityField');
+    const timeField = document.getElementById('timeField');
+
+    function openModal(type){
+      form.reset();
+      if(type === 'book'){
+        modalTitle.textContent = 'Book a Quick Call';
+        modalDesc.textContent = 'Pick a time. We confirm on WhatsApp.';
+        formTypeEl.value = 'book';
+        timeField.style.display = '';
+        websiteField.style.display = 'none';
+        cityField.style.display = 'none';
+      } else {
+        modalTitle.textContent = 'Free Website Audit';
+        modalDesc.textContent = 'Share a few details. You’ll get quick, direct feedback.';
+        formTypeEl.value = 'audit';
+        timeField.style.display = 'none';
+        websiteField.style.display = '';
+        cityField.style.display = '';
+      }
+      modal.classList.add('active');
+    }
+    function closeModal(){ modal.classList.remove('active'); }
+    document.querySelectorAll('[data-open]').forEach(btn=>{
+      btn.addEventListener('click', ()=> openModal(btn.getAttribute('data-open')));
+    });
+    document.querySelectorAll('[data-close]').forEach(el=> el.addEventListener('click', closeModal));
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+    // Form submission -> WhatsApp
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const type = formTypeEl.value;
+      const name = document.getElementById('name').value.trim();
+      const business = document.getElementById('business').value.trim();
+      const website = document.getElementById('website').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const time = document.getElementById('time').value;
+      const notes = document.getElementById('notes').value.trim();
+
+      let text = '';
+      if(type === 'book'){
+        text = `Hi PrimePage, I'd like to book a quick call.
+- Name: ${name}
+- Business: ${business}
+- Preferred time: ${time || 'Anytime'}
+${notes ? `- Notes: ${notes}` : ''}`;
+      } else {
+        text = `Hi PrimePage, I'd like a free website audit.
+- Name: ${name}
+- Business: ${business}
+${website ? `- Website: ${website}` : '- Website: (none)'}
+${city ? `- City: ${city}` : ''}
+${notes ? `- Notes: ${notes}` : ''}`;
+      }
+      const link = waLink(text);
+      window.open(link, '_blank', 'noopener');
+      closeModal();
+    });
+
+    // Ensure CTA WhatsApp carries context on click
+    ctaWA.addEventListener('click', (e)=>{
+      ctaWA.href = waLink("Hi PrimePage, I want a quick audit and next steps.");
+    });
+    floatWA.addEventListener('click', ()=> { floatWA.href = waLink("Hi PrimePage, can we discuss a new website?"); });
+
+  </script>
+</body>
+</html>
